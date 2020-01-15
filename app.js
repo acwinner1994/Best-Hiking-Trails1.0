@@ -2,6 +2,7 @@ var express     = require("express"),
     app         = express(),
     bodyParser  = require("body-parser"),
     mongoose    = require("mongoose"),
+    //？1
     methodOverride=require("method-override"),
     //for put request
     Comment     = require("./modules/comment"),
@@ -25,6 +26,7 @@ var express     = require("express"),
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname+"/public"));
+//？2
 app.use(methodOverride("_method"));//?
 app.use(flash());
 
@@ -33,6 +35,7 @@ secret:"i will do whatever I can to fuck a beatiful white young girl",
 resave:false,
 saveUninitialized:false
 }));
+app.locals.moment = require('moment');
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
@@ -54,7 +57,7 @@ app.use("/",indexRoutes);
 app.use("/campgrounds",campgroundRoutes);
 app.use("/campgrounds/:id/comments",commentRoutes);
 
-app.listen(process.env.PORT||3002, function(){
+app.listen(process.env.PORT||3001, function(){
    console.log("The YelpCamp Server Has Started!");
 });
 
