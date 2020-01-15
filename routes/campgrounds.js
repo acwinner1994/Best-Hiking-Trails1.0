@@ -24,9 +24,10 @@ router.post("/", function(req, res){
     var desc = req.body.description;
     var id=req.user._id;
     var username=req.user.username;
+    var location=req.body.location;
 
 
-    var newCampground = {name: name, image: image,cost:cost, description: desc,author:{
+    var newCampground = {name: name, image: image,location:location,cost:cost, description: desc,author:{
       id:id,
       username:username
     },};
