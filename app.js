@@ -20,7 +20,7 @@ var express     = require("express"),
     var indexRoutes=require("./routes/index");
 
   //database connect
-  mongoose.connect("mongodb+srv://admin:test123@cluster0-b4qcr.mongodb.net/Currency_exchangeDB",{useNewUrlParser:true});
+  mongoose.connect("mongodb+srv://admin:test123@cluster0-b4qcr.mongodb.net/hiking_review",{useNewUrlParser:true});
 
 //
 app.use(bodyParser.urlencoded({extended:true}));
@@ -42,7 +42,7 @@ passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-seedDB();
+//seedDB();
 
 //middle ware that apply to every routes
 app.use(function(req,res,next){
